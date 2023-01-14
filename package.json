@@ -1,0 +1,45 @@
+{
+  "name": "@am92/jose-crypto-subtle",
+  "version": "1.0.0",
+  "description": "JOSE Cryptography for Web",
+  "type": "module",
+  "main": "src/JoseCryptoSubtle.mjs",
+  "module": "src/JoseCryptoSubtle.mjs",
+  "scripts": {
+    "test": "echo 'Error: no test specified'",
+    "preversion": "pnpm test",
+    "version": "echo 'Versioning'",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": "git@github.com:heliumtank92/am92-jose-crypto-subtle.git",
+  "homepage": "https://github.com/heliumtank92/am92-jose-crypto-subtle#readme",
+  "contributors": [
+    {
+      "name": "Ankit Gandhi",
+      "email": "ankitgandhi452@gmail.com",
+      "url": "https://github.com/ankitgandhi452"
+    },
+    {
+      "name": "Mehul Agarwal",
+      "email": "agarwalmehul92@gmail.com",
+      "url": "https://github.com/agarwalmehul"
+    }
+  ],
+  "license": "MIT",
+  "exports": {
+    ".": "./src/JoseCryptoSubtle.mjs"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "jose",
+    "encryption",
+    "decryption",
+    "rsa",
+    "rsa2048",
+    "aes",
+    "aes256",
+    "symmetric key",
+    "asymettric key",
+    "subtle"
+  ]
+}
