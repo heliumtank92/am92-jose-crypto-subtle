@@ -3,8 +3,8 @@
   "version": "0.0.7",
   "description": "JOSE Cryptography for Web",
   "type": "module",
-  "main": "src/JoseCryptoSubtle.mjs",
-  "module": "src/JoseCryptoSubtle.mjs",
+  "main": "index.mjs",
+  "module": "index.mjs",
   "scripts": {
     "test": "echo 'Error: no test specified'",
     "preversion": "pnpm test",
@@ -27,7 +27,7 @@
   ],
   "license": "MIT",
   "exports": {
-    ".": "./src/JoseCryptoSubtle.mjs"
+    ".": "./index.mjs"
   },
   "devDependencies": {},
   "keywords": [
