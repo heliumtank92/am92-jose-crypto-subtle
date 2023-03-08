@@ -1,6 +1,6 @@
 {
   "name": "@am92/jose-crypto-subtle",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "JOSE Cryptography for Web",
   "type": "module",
   "exports": {
