@@ -53,7 +53,7 @@ async function encryptData (data, key) {
   _validateEncryptParams(key)
   const ivBuffer = window.crypto.getRandomValues(new Uint8Array(AES_IV_LENGTH))
   const aesGcmParams = { ...aesKeyObject, iv: ivBuffer }
-  const stringifiedData = JSON.stringify({ data })
+  const stringifiedData = typeof data === 'string' ? data : JSON.stringify(data)
   const plainTextBuffer = utils.toBuffer(stringifiedData, AES_PLAIN_TEXT_FORMAT)
 
   const encryptedBuffer = await window.crypto.subtle.encrypt(aesGcmParams, key, plainTextBuffer)
@@ -83,9 +83,8 @@ async function decryptData (payload, key) {
   const plainTextBuffer = await window.crypto.subtle.decrypt(aesGcmParams, key, encryptedBuffer)
 
   const plainTextString = utils.toString(plainTextBuffer, AES_PLAIN_TEXT_FORMAT)
-  const { data } = JSON.parse(plainTextString)
-
-  return data
+  const plainText = _parse(plainTextString)
+  return plainText
 }
 
 function _validategenerateAndWrapKeyParams (publicKey) {
@@ -108,5 +107,13 @@ function _validateDecryptParams (payload, key) {
     !key
   ) {
     throw new JoseCryptoSubtleError({}, INVALID_AES_DECRYPTION_PARAMS_ERROR)
+  }
+}
+
+function _parse (string) {
+  try {
+    return JSON.parse(string)
+  } catch (error) {
+    return string
   }
 }
