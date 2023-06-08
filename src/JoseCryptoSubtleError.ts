@@ -7,31 +7,17 @@ const DEFAULT_ERROR_CODE = 'JOSE_CRYPTO_SUBTLE_ERROR'
 export default class JoseCryptoSubtleError extends Error {
   _isCustomError = true
   _isJoseCryptoError = true
-  message = DEFAULT_ERROR_MSG
-  statusCode = DEFAULT_ERROR_STATUS_CODE
-  errorCode = DEFAULT_ERROR_CODE
-  error = {}
+  message: string
+  statusCode: number
+  errorCode: string
+  error?: { [key: string]: any } = {}
 
-  constructor(e?: DOMException | JoseCryptoSubtleError, eMap?: ErrorMap) {
-    if (e instanceof JoseCryptoSubtleError && !eMap) {
-      return e
-    }
-
+  constructor(e?: DOMException, eMap?: ErrorMap) {
     super()
 
-    const { message, statusCode, errorCode } = eMap || {}
-    let eMessage = ''
-    let eName = ''
-    if (e instanceof DOMException) {
-      eMessage = e.message
-      eName = e.name
-    }
-
-    this._isCustomError = true
-    this._isJoseCryptoError = true
-    this.message = message || eMessage || DEFAULT_ERROR_MSG
-    this.statusCode = statusCode || DEFAULT_ERROR_STATUS_CODE
-    this.errorCode = errorCode || eName || DEFAULT_ERROR_CODE
-    this.error = e || {}
+    this.message = eMap?.message || e?.message || DEFAULT_ERROR_MSG
+    this.statusCode = eMap?.statusCode || DEFAULT_ERROR_STATUS_CODE
+    this.errorCode = eMap?.errorCode || e?.name || DEFAULT_ERROR_CODE
+    this.error = e
   }
 }
