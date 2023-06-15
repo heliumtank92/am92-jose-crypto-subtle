@@ -22,7 +22,7 @@
     "generate:docs": "npx compodoc -p tsconfig.json"
   },
   "repository": "git@github.com:heliumtank92/am92-jose-crypto-subtle.git",
-  "homepage": "https://github.com/heliumtank92/am92-jose-crypto-subtle#readme",
+  "homepage": "https://heliumtank92.github.io/am92-jose-crypto-subtle",
   "contributors": [
     {
       "name": "Ankit Gandhi",
