@@ -3,7 +3,7 @@ export type JoseCryptoKeyObj = {
   encryptedEncryptionKey: string
 }
 
-export type ErrorMap = {
+export type JoseCryptoSubtleErrorMap = {
   message: string
   errorCode: string
   statusCode?: number
