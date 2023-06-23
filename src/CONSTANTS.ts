@@ -1,6 +1,10 @@
 /** @ignore */
 export const AES_ALGORITHM = 'AES-GCM'
 /** @ignore */
+export const AES_KEY_IMPORT_FORMAT: Exclude<KeyFormat, 'jwk'> = 'raw'
+/** @ignore */
+export const AES_KEY_EXPORT_FORMAT: Exclude<KeyFormat, 'jwk'> = 'raw'
+/** @ignore */
 export const AES_KEY_GEN_PARAMS: AesKeyGenParams = {
   name: AES_ALGORITHM,
   length: 256
