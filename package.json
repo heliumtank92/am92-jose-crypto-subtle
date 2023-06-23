@@ -1,6 +1,6 @@
 {
   "name": "@am92/jose-crypto-subtle",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "JOSE Cryptography for Web",
   "sideEffects": false,
   "types": "dist/index.d.ts",
