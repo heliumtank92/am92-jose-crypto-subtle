@@ -11,7 +11,9 @@ import {
   AES_IV_LENGTH,
   AES_ALGORITHM,
   AES_AUTH_TAG_LENGTH,
-  AES_DATA_SEPARATOR
+  AES_DATA_SEPARATOR,
+  AES_KEY_IMPORT_FORMAT,
+  AES_KEY_EXPORT_FORMAT
 } from './CONSTANTS'
 import {
   INVALID_GENERATE_AND_WRAP_KEY_PARAMS_ERROR,
@@ -184,6 +186,43 @@ export default class JoseCryptoSubtle {
     const plainTextString = utils.bufferToUtf8(plainTextBuffer)
     const plainText = _parse(plainTextString)
     return plainText
+  }
+
+  /**
+   * Function to convert CryptoKey to Base64 string.
+   *
+   * @static
+   * @async
+   * @param key AES-256-GCM CryptoKey key to be used for encryption.
+   * @returns
+   */
+  static async exportCryptoKey(key: CryptoKey): Promise<string> {
+    const keyBuffer = await window.crypto.subtle.exportKey(
+      AES_KEY_EXPORT_FORMAT,
+      key
+    )
+    const base64Key = utils.bufferToBase64(keyBuffer)
+    return base64Key
+  }
+
+  /**
+   * Function to convert Base64 string to CryptoKey.
+   *
+   * @static
+   * @async
+   * @param base64Key AES-256-GCM Base64 string to be used for encryption.
+   * @returns
+   */
+  static async importCryptoKey(base64Key: string): Promise<CryptoKey> {
+    const keyBuffer = utils.base64ToBuffer(base64Key)
+    const key = await window.crypto.subtle.importKey(
+      AES_KEY_IMPORT_FORMAT,
+      keyBuffer,
+      AES_ALGORITHM,
+      true,
+      AES_KEY_USAGE
+    )
+    return key
   }
 }
 
