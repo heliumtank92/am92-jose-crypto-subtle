@@ -103,7 +103,17 @@
                             <li>
                                     <span class="modifier">Static</span>
                                     <span class="modifier">Async</span>
+                                <a href="#exportCryptoKey" >exportCryptoKey</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                    <span class="modifier">Async</span>
                                 <a href="#generateAndWrapKey" >generateAndWrapKey</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#importCryptoKey" >importCryptoKey</a>
                             </li>
                         </ul>
                     </td>
@@ -306,6 +316,79 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="exportCryptoKey"></a>
+                    <span class="name">
+                        <span class="modifier">Static</span>
+                        <span class="modifier">Async</span>
+                        <span ><b>exportCryptoKey</b></span>
+                        <a href="#exportCryptoKey"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>exportCryptoKey(key: CryptoKey)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Function to convert CryptoKey to Base64 string.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>key</td>
+                                    <td>
+                                            <code>CryptoKey</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>AES-256-GCM CryptoKey key to be used for encryption.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="generateAndWrapKey"></a>
                     <span class="name">
                         <span class="modifier">Static</span>
@@ -366,6 +449,79 @@
                     </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="../miscellaneous/typealiases.html#JoseCryptoKeyObj" target="_self" >Promise&lt;JoseCryptoKeyObj&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="importCryptoKey"></a>
+                    <span class="name">
+                        <span class="modifier">Static</span>
+                        <span class="modifier">Async</span>
+                        <span ><b>importCryptoKey</b></span>
+                        <a href="#importCryptoKey"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>importCryptoKey(base64Key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Function to convert Base64 string to CryptoKey.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>base64Key</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>AES-256-GCM Base64 string to be used for encryption.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;CryptoKey&gt;</code>
 
                     </div>
                     <div class="io-description">
