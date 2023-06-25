@@ -5,7 +5,7 @@ const DEFAULT_ERROR_MSG = 'Jose Crypto Subtle Error'
 /** @ignore */
 const DEFAULT_ERROR_STATUS_CODE = 500
 /** @ignore */
-const DEFAULT_ERROR_CODE = 'JOSE_CRYPTO_SUBTLE_ERROR'
+const DEFAULT_ERROR_CODE = 'JoseCryptoSubtle::GENERIC_ERROR'
 
 /**
  * Error class whose instance is thrown in case of any error.
