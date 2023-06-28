@@ -18,7 +18,9 @@ import {
 import {
   INVALID_GENERATE_AND_WRAP_KEY_PARAMS_ERROR,
   INVALID_ENCRYPT_DATA_PARAMS_ERROR,
-  INVALID_DECRYPT_DATA_PARAMS_ERROR
+  INVALID_DECRYPT_DATA_PARAMS_ERROR,
+  INVALID_PUBLIC_KEY_ERROR,
+  INVALID_CRYPTO_KEY_ERROR
 } from './ERRORS'
 import JoseCryptoSubtleError from './JoseCryptoSubtleError'
 
@@ -52,13 +54,17 @@ export default class JoseCryptoSubtle {
 
     // Import Public CryptoKey
     const publicKeyBuffer: ArrayBuffer = utils.base64ToBuffer(base64PublicKey)
-    const puclicKey: CryptoKey = await window.crypto.subtle.importKey(
-      RSA_KEY_IMPORT_FORMAT,
-      publicKeyBuffer,
-      RSA_KEY_IMPORT_PARAMS,
-      true,
-      RSA_KEY_USAGES
-    )
+    const puclicKey: CryptoKey = await window.crypto.subtle
+      .importKey(
+        RSA_KEY_IMPORT_FORMAT,
+        publicKeyBuffer,
+        RSA_KEY_IMPORT_PARAMS,
+        true,
+        RSA_KEY_USAGES
+      )
+      .catch((error: DOMException) => {
+        throw new JoseCryptoSubtleError(error, INVALID_PUBLIC_KEY_ERROR)
+      })
 
     // Encrypt AES Encryption Key with RSA-OAEP Public CryptoKey
     const encryptedEncryptionKeyBuffer: ArrayBuffer = await window.crypto.subtle
@@ -215,13 +221,17 @@ export default class JoseCryptoSubtle {
    */
   static async importCryptoKey(base64Key: string): Promise<CryptoKey> {
     const keyBuffer = utils.base64ToBuffer(base64Key)
-    const key = await window.crypto.subtle.importKey(
-      AES_KEY_IMPORT_FORMAT,
-      keyBuffer,
-      AES_ALGORITHM,
-      true,
-      AES_KEY_USAGE
-    )
+    const key = await window.crypto.subtle
+      .importKey(
+        AES_KEY_IMPORT_FORMAT,
+        keyBuffer,
+        AES_ALGORITHM,
+        true,
+        AES_KEY_USAGE
+      )
+      .catch((error: DOMException) => {
+        throw new JoseCryptoSubtleError(error, INVALID_CRYPTO_KEY_ERROR)
+      })
     return key
   }
 }
