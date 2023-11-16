@@ -6,12 +6,9 @@
  * @returns
  */
 export function base64ToBuffer(base64String: string): ArrayBuffer {
-  const utf8String = atob(base64String)
-  const buffer = new Uint8Array(utf8String.length)
-  for (let i = 0; i < utf8String.length; i++) {
-    buffer[i] = utf8String.charCodeAt(i)
-  }
-  return buffer.buffer
+  const utf8String = decodeURIComponent(encodeURI(atob(base64String)))
+  const buffer = utf8ToBuffer(utf8String)
+  return buffer
 }
 
 /**
@@ -22,7 +19,7 @@ export function base64ToBuffer(base64String: string): ArrayBuffer {
  * @returns
  */
 export function utf8ToBuffer(utf8String: string): ArrayBuffer {
-  const unescapedString = unescape(encodeURIComponent(utf8String)) // 2 bytes for each char
+  const unescapedString = decodeURI(encodeURIComponent(utf8String)) // 2 bytes for each char
   const buffer = new Uint8Array(unescapedString.length)
   for (let i = 0; i < unescapedString.length; i++) {
     buffer[i] = unescapedString.charCodeAt(i)
@@ -38,12 +35,8 @@ export function utf8ToBuffer(utf8String: string): ArrayBuffer {
  * @returns
  */
 export function bufferToBase64(buffer: ArrayBuffer): string {
-  const byteArray = new Uint8Array(buffer)
-  let byteString = ''
-  for (let i = 0; i < byteArray.byteLength; i++) {
-    byteString += String.fromCharCode(byteArray[i])
-  }
-  return btoa(byteString)
+  const byteString = bufferToUtf8(buffer)
+  return btoa(decodeURI(encodeURIComponent(byteString)))
 }
 
 /**
@@ -59,7 +52,7 @@ export function bufferToUtf8(arrayBuffer: ArrayBuffer): string {
   for (let i = 0; i < byteArray.byteLength; i++) {
     byteString += String.fromCharCode(byteArray[i])
   }
-  return byteString
+  return decodeURIComponent(encodeURI(byteString))
 }
 
 /**
